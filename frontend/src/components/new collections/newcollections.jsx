@@ -3,6 +3,7 @@ import "./newcollections.css";
 import Item from "../item/item";
 
 const NewCollections = () => {
+    const backendUrl = "https://shopper-backend-ne59.onrender.com";
     const [collections, setCollections] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -11,7 +12,7 @@ const NewCollections = () => {
         const fetchCollections = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:4000/newcollections"
+                    `${backendUrl}/newcollections`
                 );
 
                 if (!response.ok) {
@@ -29,7 +30,9 @@ const NewCollections = () => {
 
                     if (img.startsWith("/src/assets/")) {
                         const filename = img.split("/").pop();
-                        img = `http://localhost:4000/images/${filename}`;
+                        img = `${backendUrl}/images/${filename}`;
+                    } else if (img.includes("localhost:4000")) {
+                        img = img.replace("http://localhost:4000", backendUrl);
                     }
 
                     return {

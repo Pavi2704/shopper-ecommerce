@@ -3,6 +3,7 @@ import "./css/loginsignup.css";
 import { Link } from "react-router-dom";
 
 const LoginSignup = () => {
+    const backendUrl = "https://shopper-backend-ne59.onrender.com";
     const [state, setState] = useState("Login");
     const [agree, setAgree] = useState(false);
     const [agreeError, setAgreeError] = useState("");
@@ -33,7 +34,7 @@ const LoginSignup = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:4000/login", {
+            const response = await fetch(`${backendUrl}/login`, {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
@@ -69,7 +70,7 @@ const LoginSignup = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:4000/signup", {
+            const response = await fetch(`${backendUrl}/signup`, {
                 method: "POST",
                 headers: {
                     Accept: "application/json",

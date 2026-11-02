@@ -7,9 +7,9 @@ import React, {
 } from "react";
 
 export const ShopContext = createContext(null);
+export const backendUrl = "https://shopper-backend-ne59.onrender.com";
 
 const ShopContextProvider = ({ children }) => {
-    const backendUrl = "http://localhost:4000";
 
     const [all_product, setAll_Product] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -46,6 +46,8 @@ const ShopContextProvider = ({ children }) => {
 
                 if (img.startsWith("/src/assets/")) {
                     img = `${backendUrl}/images/${img.split("/").pop()}`;
+                } else if (img.includes("localhost:4000")) {
+                    img = img.replace("http://localhost:4000", backendUrl);
                 }
 
                 return {
@@ -167,6 +169,7 @@ const ShopContextProvider = ({ children }) => {
     };
 
     const contextValue = {
+        backendUrl,
         all_product,
         cartItems,
         loading,

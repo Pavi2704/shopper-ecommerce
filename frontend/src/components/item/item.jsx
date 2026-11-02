@@ -18,7 +18,7 @@ const Item = (props) => {
                         className="item-img"
                         loading="lazy"
                         onError={(e) => {
-                            e.target.src = "http://localhost:4000/images/product_1.png";
+                            e.target.src = "https://shopper-backend-ne59.onrender.com/images/product_1.png";
                         }}
                     />
                 </Link>

@@ -23,7 +23,7 @@ const ProductDisplay = (props) => {
     }
 
     const sizes = ["S", "M", "L", "XL", "XXL"];
-    const fallbackImg = "http://localhost:4000/images/product_1.png";
+    const fallbackImg = "https://shopper-backend-ne59.onrender.com/images/product_1.png";
     const displayImg = activeImg || product.image || fallbackImg;
 
     const hasDiscount = product.old_price && product.old_price > product.new_price;

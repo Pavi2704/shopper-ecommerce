@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const CartItems = () => {
     const {
+        backendUrl,
         all_product,
         cartItems,
         addToCart,
@@ -38,7 +39,8 @@ const CartItems = () => {
         orderNotes: ""
     });
 
-    const fallbackImg = "http://localhost:4000/images/product_1.png";
+    const currentBackendUrl = backendUrl || "https://shopper-backend-ne59.onrender.com";
+    const fallbackImg = `${currentBackendUrl}/images/product_1.png`;
 
     // Filter items in cart
     const itemsInCart = all_product.filter((item) => cartItems[item.id] > 0);
@@ -141,7 +143,7 @@ const CartItems = () => {
 
         // Try submitting to backend endpoint if running
         try {
-            await fetch("http://localhost:4000/placeorder", {
+            await fetch(`${currentBackendUrl}/placeorder`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -3,6 +3,7 @@ import "./popular.css";
 import Item from "../item/item";
 
 const Popular = () => {
+    const backendUrl = "https://shopper-backend-ne59.onrender.com";
     const [popularProducts, setPopularProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -11,7 +12,7 @@ const Popular = () => {
         const fetchPopularProducts = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:4000/popularinwomen"
+                    `${backendUrl}/popularinwomen`
                 );
 
                 if (!response.ok) {
@@ -29,7 +30,9 @@ const Popular = () => {
 
                     if (img.startsWith("/src/assets/")) {
                         const filename = img.split("/").pop();
-                        img = `http://localhost:4000/images/${filename}`;
+                        img = `${backendUrl}/images/${filename}`;
+                    } else if (img.includes("localhost:4000")) {
+                        img = img.replace("http://localhost:4000", backendUrl);
                     }
 
                     return {

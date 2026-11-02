@@ -26,7 +26,7 @@ for (let i = 1; i <= 12; i++) {
         id: i,
         name: `Striped Flutter Sleeve Peplum Hem Blouse #${i}`,
         category: "women",
-        image: `http://localhost:4000/images/product_${i}.png`,
+        image: `http://0/images/product_${i}.png`,
         new_price: 50.0 + (i % 5) * 10,
         old_price: 80.0 + (i % 5) * 12,
         description: "Elegant and stylish women floral flutter sleeve top for all occasions.",
@@ -40,7 +40,7 @@ for (let i = 13; i <= 24; i++) {
         id: i,
         name: `Men Slim Fit Urban Bomber Jacket #${i}`,
         category: "men",
-        image: `http://localhost:4000/images/product_${i}.png`,
+        image: `https://shopper-backend-ne59.onrender.com/images/product_${i}.png`,
         new_price: 65.0 + (i % 4) * 15,
         old_price: 110.0 + (i % 4) * 15,
         description: "Modern street style men jacket with premium zipper and comfortable inner lining.",
@@ -54,7 +54,7 @@ for (let i = 25; i <= 36; i++) {
         id: i,
         name: `Boys Colourblocked Hooded Sweatshirt #${i}`,
         category: "kids",
-        image: `http://localhost:4000/images/product_${i}.png`,
+        image: `https://shopper-backend-ne59.onrender.com/images/product_${i}.png`,
         new_price: 45.0 + (i % 3) * 10,
         old_price: 75.0 + (i % 3) * 12,
         description: "Cozy warm kids pullover hoodie made from pure organic cotton.",
@@ -80,7 +80,7 @@ async function runSeed() {
         // Fix image for product 26 if relative
         const p26 = await Product.findOne({ id: 26 });
         if (p26 && p26.image.startsWith("/")) {
-            p26.image = "http://localhost:4000/images/product_13.png";
+            p26.image = "https://shopper-backend-ne59.onrender.com/images/product_13.png";
             await p26.save();
             console.log("Updated product 26 image URL to full backend URL");
         }
