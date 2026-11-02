@@ -1,0 +1,33 @@
+.newcollections {
+    padding: 70px clamp(16px, 5vw, 60px);
+    max-width: 1360px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.collections {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(16px, 2.5vw, 30px);
+    width: 100%;
+}
+
+@media (max-width: 1080px) {
+    .collections {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .newcollections {
+        padding: 45px 16px;
+    }
+
+    .collections {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+}
